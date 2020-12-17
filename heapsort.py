@@ -30,9 +30,6 @@ class Heap:
     def wert(self, i):
         return self.liste[i]
 
-    def getList(self, i):
-        return self.liste
-
     def maximum(self, a, b, c):
         if(self.wert(a) >= self.wert(b) and self.wert(a) >= self.wert(c)):
             return a
