@@ -46,8 +46,33 @@ class Heap:
         self.liste[i] = self.liste[j]
         self.liste[j] = temp
 
+    def heapify(self, i):
+        l = self.linkesKind(i)
+        r = self.rechtesKind(i)
+        if(l == -1):
+            l = i
+        if(r == -1):
+            r = i
+        max = self.maximum(l, r, i)
+        if max != i:
+            self.vertausche(i, max)
+            self.heapify(max)
+
+    def baueMaxHeap(self):
+        i = self.groesstesParent()
+        while(i >= 0):
+            self.heapify(i)
+            i = i-1
+
+    def heapsort(self):
+        while(self.groesse > 1):
+            self.baueMaxHeap()
+            self.vertausche(0, self.groesse - 1)
+            self.groesse = self.groesse - 1
 
 # Testcases
+
+
 class TestHeap(unittest.TestCase):
     def test_linkesKind_von_2_is_5(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -128,6 +153,21 @@ class TestHeap(unittest.TestCase):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
         heap.vertausche(0, 0)
         self.assertEqual(heap.liste, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+    def test_heapsort_1(self):
+        heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
+        heap.heapsort()
+        self.assertEqual(heap.liste, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+    def test_heapsort_2(self):
+        heap = Heap([2, 3, 1, 4, 5, 7, 6, 9, 8])
+        heap.heapsort()
+        self.assertEqual(heap.liste, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+    def test_heapsort_3(self):
+        heap = Heap([17, -33, 2, 5, 23, 48, 7])
+        heap.heapsort()
+        self.assertEqual(heap.liste, [-33, 2, 5, 7, 17, 23, 48])
 
 
 # Run Tests
