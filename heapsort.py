@@ -11,6 +11,9 @@ class Heap:
     def parent(self, i):
         return (i-1)//2
 
+    def groesstesParent(self):
+        return (self.groesse//2)-1
+
     def vertausche(self, i, j):
         temp = self.liste[i]
         self.liste[i] = self.liste[j]
@@ -19,6 +22,21 @@ class Heap:
 
 # Testcases
 class TestHeap(unittest.TestCase):
+    def test_groesstesParent_is_4(self):
+        heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        result = heap.groesstesParent()
+        self.assertEqual(result, 4)
+
+    def test_groesstesParent_is_4(self):
+        heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
+        result = heap.groesstesParent()
+        self.assertEqual(result, 3)
+
+    def test_groesstesParent_is_4(self):
+        heap = Heap([1, 2, 3, 4, 5, 6, 7, 8])
+        result = heap.groesstesParent()
+        self.assertEqual(result, 3)
+
     def test_parent_0_is_minus_1(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
         result = heap.parent(0)
