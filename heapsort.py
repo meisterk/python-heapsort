@@ -55,7 +55,7 @@ class Heap:
             self.swap_objects(index, index_of_max)
             self.heapify(index_of_max)
 
-    def baueMaxHeap(self):
+    def build_max_heap(self):
         i = self.index_of_biggest_parent()
         while(i >= 0):
             self.heapify(i)
@@ -63,7 +63,7 @@ class Heap:
 
     def heapsort(self):
         while(self.groesse > 1):
-            self.baueMaxHeap()
+            self.build_max_heap()
             self.swap_objects(0, self.groesse - 1)
             self.groesse = self.groesse - 1
 
@@ -71,7 +71,7 @@ class Heap:
 
 
 class TestHeap(unittest.TestCase):
-    def test_linkesKind_von_2_is_5(self):
+    def test_left_child_of_2_is_5(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         result = heap.index_of_left_child(2)
         self.assertEqual(result, 5)
