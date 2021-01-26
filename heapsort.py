@@ -8,7 +8,7 @@ class Heap:
         self.groesse = len(liste)
 
     # Methoden
-    def parent(self, i):
+    def index_of_parent(self, i):
         return (i-1)//2
 
     def linkesKind(self, i):
@@ -108,22 +108,22 @@ class TestHeap(unittest.TestCase):
 
     def test_parent_0_is_minus_1(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        result = heap.parent(0)
+        result = heap.index_of_parent(0)
         self.assertEqual(result, -1)
 
     def test_parent_9_is_4(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        result = heap.parent(9)
+        result = heap.index_of_parent(9)
         self.assertEqual(result, 4)
 
     def test_parent_8_is_3(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        result = heap.parent(8)
+        result = heap.index_of_parent(8)
         self.assertEqual(result, 3)
 
     def test_parent_7_is_3(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        result = heap.parent(7)
+        result = heap.index_of_parent(7)
         self.assertEqual(result, 3)
 
     def test_maximum_0_1_2(self):
