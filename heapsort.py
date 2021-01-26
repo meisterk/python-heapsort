@@ -30,13 +30,13 @@ class Heap:
     def value(self, index):
         return self.liste[index]
 
-    def index_of_node_with_maximum_value(self, a, b, c):
-        if(self.value(a) >= self.value(b) and self.value(a) >= self.value(c)):
-            return a
-        if(self.value(b) >= self.value(a) and self.value(b) >= self.value(c)):
-            return b
+    def index_of_node_with_maximum_value(self, index1, index2, index3):
+        if(self.value(index1) >= self.value(index2) and self.value(index1) >= self.value(index3)):
+            return index1
+        if(self.value(index2) >= self.value(index1) and self.value(index2) >= self.value(index3)):
+            return index2
         else:
-            return c
+            return index3
 
     def swap_objects(self, index1, index2):
         temp = self.liste[index1]
