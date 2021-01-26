@@ -8,23 +8,23 @@ class Heap:
         self.groesse = len(liste)
 
     # Methoden
-    def index_of_parent(self, i):
-        return (i-1)//2
+    def index_of_parent(self, index):
+        return (index-1)//2
 
-    def linkesKind(self, i):
-        if(i <= self.groesstesParent()):
-            return 2*i + 1
+    def index_of_left_child(self, index):
+        if(index <= self.index_of_biggest_parent()):
+            return 2*index + 1
         else:
             return -1
 
-    def rechtesKind(self, i):
-        r = 2*i+2
+    def index_of_right_child(self, index):
+        r = 2*index + 2
         if(r < self.groesse):
             return r
         else:
             return -1
 
-    def groesstesParent(self):
+    def index_of_biggest_parent(self):
         return (self.groesse//2)-1
 
     def wert(self, i):
@@ -44,8 +44,8 @@ class Heap:
         self.liste[j] = temp
 
     def heapify(self, i):
-        l = self.linkesKind(i)
-        r = self.rechtesKind(i)
+        l = self.index_of_left_child(i)
+        r = self.index_of_right_child(i)
         if(l == -1):
             l = i
         if(r == -1):
@@ -56,7 +56,7 @@ class Heap:
             self.heapify(max)
 
     def baueMaxHeap(self):
-        i = self.groesstesParent()
+        i = self.index_of_biggest_parent()
         while(i >= 0):
             self.heapify(i)
             i = i-1
@@ -73,37 +73,37 @@ class Heap:
 class TestHeap(unittest.TestCase):
     def test_linkesKind_von_2_is_5(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-        result = heap.linkesKind(2)
+        result = heap.index_of_left_child(2)
         self.assertEqual(result, 5)
 
     def test_linkesKind_von_5_is_minus_1(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-        result = heap.linkesKind(5)
+        result = heap.index_of_left_child(5)
         self.assertEqual(result, -1)
 
     def test_rechtesKind_von_5_is_minus_1(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-        result = heap.rechtesKind(5)
+        result = heap.index_of_right_child(5)
         self.assertEqual(result, -1)
 
     def test_rechtesKind_von_2_is_6(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-        result = heap.rechtesKind(2)
+        result = heap.index_of_right_child(2)
         self.assertEqual(result, 6)
 
     def test_groesstesParent_is_4(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-        result = heap.groesstesParent()
+        result = heap.index_of_biggest_parent()
         self.assertEqual(result, 4)
 
     def test_groesstesParent_is_4(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        result = heap.groesstesParent()
+        result = heap.index_of_biggest_parent()
         self.assertEqual(result, 3)
 
     def test_groesstesParent_is_4(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8])
-        result = heap.groesstesParent()
+        result = heap.index_of_biggest_parent()
         self.assertEqual(result, 3)
 
     def test_parent_0_is_minus_1(self):
