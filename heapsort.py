@@ -27,10 +27,10 @@ class Heap:
     def index_of_biggest_parent(self):
         return (self.groesse//2)-1
 
-    def value(self, i):
-        return self.liste[i]
+    def value(self, index):
+        return self.liste[index]
 
-    def maximum(self, a, b, c):
+    def index_of_node_with_maximum_value(self, a, b, c):
         if(self.value(a) >= self.value(b) and self.value(a) >= self.value(c)):
             return a
         if(self.value(b) >= self.value(a) and self.value(b) >= self.value(c)):
@@ -50,7 +50,7 @@ class Heap:
             l = i
         if(r == -1):
             r = i
-        max = self.maximum(l, r, i)
+        max = self.index_of_node_with_maximum_value(l, r, i)
         if max != i:
             self.swap_objects(i, max)
             self.heapify(max)
@@ -128,12 +128,12 @@ class TestHeap(unittest.TestCase):
 
     def test_maximum_0_1_2(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        result = heap.maximum(0, 1, 2)
+        result = heap.index_of_node_with_maximum_value(0, 1, 2)
         self.assertEqual(result, 2)
 
     def test_maximum_3_7_8(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        result = heap.maximum(3, 7, 8)
+        result = heap.index_of_node_with_maximum_value(3, 7, 8)
         self.assertEqual(result, 8)
 
     def test_vertausche_1_2(self):
