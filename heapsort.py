@@ -2,12 +2,12 @@ import unittest
 
 
 class Heap:
-    # Konstruktor mit Datenfeldern
+    # Constructor with Attributes
     def __init__(self, liste):
         self.liste = liste
         self.groesse = len(liste)
 
-    # Methoden
+    # Methods
     def index_of_parent(self, index):
         return (index-1)//2
 
