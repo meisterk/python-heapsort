@@ -38,10 +38,10 @@ class Heap:
         else:
             return c
 
-    def swap(self, i, j):
-        temp = self.liste[i]
-        self.liste[i] = self.liste[j]
-        self.liste[j] = temp
+    def swap_objects(self, index1, index2):
+        temp = self.liste[index1]
+        self.liste[index1] = self.liste[index2]
+        self.liste[index2] = temp
 
     def heapify(self, i):
         l = self.index_of_left_child(i)
@@ -52,7 +52,7 @@ class Heap:
             r = i
         max = self.maximum(l, r, i)
         if max != i:
-            self.swap(i, max)
+            self.swap_objects(i, max)
             self.heapify(max)
 
     def baueMaxHeap(self):
@@ -64,7 +64,7 @@ class Heap:
     def heapsort(self):
         while(self.groesse > 1):
             self.baueMaxHeap()
-            self.swap(0, self.groesse - 1)
+            self.swap_objects(0, self.groesse - 1)
             self.groesse = self.groesse - 1
 
 # Testcases
@@ -138,17 +138,17 @@ class TestHeap(unittest.TestCase):
 
     def test_vertausche_1_2(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        heap.swap(0, 1)
+        heap.swap_objects(0, 1)
         self.assertEqual(heap.liste, [2, 1, 3, 4, 5, 6, 7, 8, 9])
 
     def test_vertausche_1_9(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        heap.swap(0, 8)
+        heap.swap_objects(0, 8)
         self.assertEqual(heap.liste, [9, 2, 3, 4, 5, 6, 7, 8, 1])
 
     def test_vertausche_1_1(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9])
-        heap.swap(0, 0)
+        heap.swap_objects(0, 0)
         self.assertEqual(heap.liste, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 
     def test_heapsort_1(self):
