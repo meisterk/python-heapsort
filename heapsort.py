@@ -27,13 +27,13 @@ class Heap:
     def index_of_biggest_parent(self):
         return (self.groesse//2)-1
 
-    def wert(self, i):
+    def value(self, i):
         return self.liste[i]
 
     def maximum(self, a, b, c):
-        if(self.wert(a) >= self.wert(b) and self.wert(a) >= self.wert(c)):
+        if(self.value(a) >= self.value(b) and self.value(a) >= self.value(c)):
             return a
-        if(self.wert(b) >= self.wert(a) and self.wert(b) >= self.wert(c)):
+        if(self.value(b) >= self.value(a) and self.value(b) >= self.value(c)):
             return b
         else:
             return c
