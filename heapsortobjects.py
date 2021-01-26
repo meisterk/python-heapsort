@@ -37,9 +37,9 @@ class Heap:
         return self.liste[index].priority
 
     def index_of_node_with_maximum_priority(self, index1, index2, index3):
-        if(self.priority(index1) >= self.priority(index2) and self.priority(index1) >= self.priority(index3)):
+        if((self.priority(index1) >= self.priority(index2)) and (self.priority(index1) >= self.priority(index3))):
             return index1
-        if(self.priority(index2) >= self.priority(index1) and self.priority(index2) >= self.priority(index3)):
+        if((self.priority(index2) >= self.priority(index1)) and (self.priority(index2) >= self.priority(index3))):
             return index2
         else:
             return index3
