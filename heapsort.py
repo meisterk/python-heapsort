@@ -43,17 +43,17 @@ class Heap:
         self.liste[index1] = self.liste[index2]
         self.liste[index2] = temp
 
-    def heapify(self, i):
-        l = self.index_of_left_child(i)
-        r = self.index_of_right_child(i)
+    def heapify(self, index):
+        l = self.index_of_left_child(index)
+        r = self.index_of_right_child(index)
         if(l == -1):
-            l = i
+            l = index
         if(r == -1):
-            r = i
-        max = self.index_of_node_with_maximum_value(l, r, i)
-        if max != i:
-            self.swap_objects(i, max)
-            self.heapify(max)
+            r = index
+        index_of_max = self.index_of_node_with_maximum_value(l, r, index)
+        if index_of_max != index:
+            self.swap_objects(index, index_of_max)
+            self.heapify(index_of_max)
 
     def baueMaxHeap(self):
         i = self.index_of_biggest_parent()
