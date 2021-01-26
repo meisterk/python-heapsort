@@ -76,17 +76,17 @@ class TestHeap(unittest.TestCase):
         result = heap.index_of_left_child(2)
         self.assertEqual(result, 5)
 
-    def test_linkesKind_von_5_is_minus_1(self):
+    def test_left_child_of_5_is_minus_1(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         result = heap.index_of_left_child(5)
         self.assertEqual(result, -1)
 
-    def test_rechtesKind_von_5_is_minus_1(self):
+    def test_right_child_of_5_is_minus_1(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         result = heap.index_of_right_child(5)
         self.assertEqual(result, -1)
 
-    def test_rechtesKind_von_2_is_6(self):
+    def test_right_child_of_2_is_6(self):
         heap = Heap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         result = heap.index_of_right_child(2)
         self.assertEqual(result, 6)
