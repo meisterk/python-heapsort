@@ -31,6 +31,9 @@ class Heap:
             return -1
 
     def index_of_biggest_parent(self):
+        """Maximum index of all elements,
+           that have at least one child
+        """
         return (self.groesse//2)-1
 
     def priority(self, index):
@@ -72,6 +75,22 @@ class Heap:
             self.build_max_heap()
             self.swap_objects(0, self.groesse - 1)
             self.groesse = self.groesse - 1
+
+
+# Illustration of the indizes of the elements in the tree
+"""
+                 0
+              /     \
+             /       \
+            1         2
+           / \       / \
+          /   \     /   \
+         3     4   5     6
+        / \   / \
+       7   8 9  10
+    
+index_of_biggest_parent: 4 (Maximum index of all elements, that have at least one child)
+"""
 
 # Testcases
 
